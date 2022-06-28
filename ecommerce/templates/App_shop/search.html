@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class='container my-5'>
+    {% for product in product_title %}
+            <div class="list-group">
+                <a href="{% url 'App_shop:product_details' pk=product.pk %}" class="list-group-item list-group-item-action" aria-current="true">
+                    <img src="/media/{{product.mainimage}}" style="height:100px;">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{product.name}}</h5>
+                </div>
+                <p class="mb-1">{{product.preview_text|truncatechars:20}}</p>
+                <small>&#2547;{{product.price}} <strike>&#2547;{{product.oldprice}}</strike></small>
+                </a>
+    {% endfor %}
+</div>
+{% endblock %}
